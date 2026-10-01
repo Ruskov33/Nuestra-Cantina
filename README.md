@@ -1,4 +1,4 @@
-# Proyecto-Cantina
+![Uploading Logo2_sinfondo.png…]()
 Es una iniciativa escolar desarrollada por nuestro equipo para transformar el sistema tradicional de vouchers de papel en una plataforma completamente digitalizada. El sistema integra una base de datos robusta con una interfaz intuitiva, diseñada específicamente para que los trabajadores de la cantina puedan gestionar los pedidos de manera más rápida, ordenada y eficiente.
 
 Equipo:<br>
