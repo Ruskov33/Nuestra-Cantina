@@ -4,6 +4,8 @@ const content = document.querySelector('.content');
 const salirBtn = document.getElementById('salirBtn');
 const manualBtn = document.getElementById('manualBtn');
 const cancelarBtn = document.getElementById('cancelar-btn');
+const codigoInput = document.getElementById('codigo');
+const buscarBtn = document.getElementById('buscar-btn');
 const NEXT_PAGE = 'menu.html';
 const HOME_PAGE = 'inicio.html';
 
@@ -47,3 +49,13 @@ window.addEventListener('pageshow', (event) => {
         content.classList.remove('slide-out');
     }
 });
+
+//Funcionalidad para BUSCAR CÓDIGO
+if (buscarBtn && codigoInput) {
+    buscarBtn.addEventListener('click', () => {
+        const texto = codigoInput.value.toUpperCase();
+        console.log('Botón BUSCAR presionado. Código:', texto);
+        
+        //Aca tenemos que meter la logica del codigo
+    });
+}
