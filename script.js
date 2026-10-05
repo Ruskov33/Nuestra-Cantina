@@ -56,6 +56,14 @@ if (buscarBtn && codigoInput) {
         const texto = codigoInput.value.toUpperCase();
         console.log('Botón BUSCAR presionado. Código:', texto);
         
-        //Aca tenemos que meter la logica del codigo
+        let codigoEsValido = false; //Modificar este valor segun si el codigo existe
+
+        if (codigoEsValido) {
+            codigoInput.style.color = '#31961d';  // Se pone verde si es correcto
+            // Aca ponemos lo que pasa si el usuario existe
+        } else {
+            codigoInput.style.color = '#de2509';  // Se pone rojo si es incorrecto
+        }
+    });
     });
 }
