@@ -1,5 +1,6 @@
 import sqlite3
 import sys
+from datetime import datetime
 
 def menu():
         print("\nMENU\n")
@@ -130,9 +131,8 @@ def asignar_voucher():
 
 def consumir_voucher():
     cod = input("Ingrese el código del alumno que desea consumir un voucher: ")
-    id_dia = input("Ingrese el día de la semana actual (1-5): ")
+    id_dia = datetime.now().weekday() + 1
     id_comida = input("Ingrese la comida que desea consumir (1: Desayuno, 2: Almuerzo, 3: Merienda, 4: Cena): ")
-    fecha = input("Ingrese la fecha de hoy: ")
 
     conexion = sqlite3.connect("BD_VOUCHER.db")
     cursor = conexion.cursor()
@@ -148,13 +148,16 @@ def consumir_voucher():
 
     if voucher:
         id_asignacion = voucher[0]
+        ahora = datetime.now()
+
+        fecha= ahora.strftime("%Y-%m-%d") 
+        hora_consumo = ahora.strftime("%H:%M:%S") 
 
         cursor.execute(
-            "INSERT INTO CONSUMO_VOUCHERS (id_asignacion, fecha) VALUES (?, ?)",
-            (id_asignacion, fecha)
+            "INSERT INTO CONSUMO_VOUCHERS (id_asignacion, fecha, hora_consumo) VALUES (?, ?, ?)",
+            (id_asignacion, fecha, hora_consumo)
         )
-
-        conexion.commit()
+        
         print("Voucher consumido correctamente.")
 
     else:
@@ -172,6 +175,7 @@ def setear_comidas():
 def setear_dias():
     conexion = sqlite3.connect("BD_VOUCHER.db")
     cursor = conexion.cursor()
+    cursor.execute("PRAGMA foreign_keys = ON;")
     cursor.execute("INSERT INTO DIA_VOUCHERS (nombre_dia) VALUES (?), (?), (?), (?), (?)", ("Lunes", "Martes", "Miercoles", "Jueves", "Viernes"))
     conexion.commit()
     conexion.close()
@@ -273,13 +277,17 @@ while True:
 
         case 5:
             setear_comidas()
+
         case 6:
             setear_dias()
+            
         case 7:
             mostrar_voucher()
+
         case 8:
             print("UwU")
             sys.exit()
+            
         case _:
               print("Opcion invalida pelele\n")
 
