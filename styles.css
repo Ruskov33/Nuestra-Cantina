@@ -406,6 +406,7 @@ main.content {
     text-align: center;
     letter-spacing: 10px;
     outline: none;
+    text-transform: uppercase;
 }
 
 .codigo-input input:focus {
@@ -597,4 +598,53 @@ body.pagina-inicio .start-btn:hover {
 body.pagina-inicio .icon-btn {
     background-color: var(--white);
     border-color: var(--ink);
+}
+
+/* ---------- Cuadrícula de los 4 botones de comida ---------- */
+.menu-cuadricula-botones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    max-width: 415px;
+}
+
+.opcion-btn {
+    background-color: var(--white);
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    aspect-ratio: 1 / 1; /* Esto asegura que sean exactamente cuadrados */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.opcion-btn:hover {
+    background-color: var(--gray-light);
+    transform: scale(1.03);
+}
+
+.icon-comida {
+    width: 48px;
+    height: 48px;
+    stroke: var(--ink);
+    stroke-width: 2.2;
+}
+
+/* ---------- Estilo adaptativo para los iconos de comida ---------- */
+.icon-comida {
+    width: clamp(40px, 5vw, 56px);   
+    height: clamp(40px, 5vw, 56px);
+    stroke: var(--ink);
+    stroke-width: 2.2;
+    flex-shrink: 0;
 }
